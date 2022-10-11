@@ -3,6 +3,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 
 import productosRouter from './Routers/productRouter.js';
+import mensajesRouter from './Routers/mensajesRouter.js';
 
 dotenv.config();
 const PORT = process.env.PORT || 8080;
@@ -18,6 +19,7 @@ app.use(
 app.use(express.json());
 
 app.use('/api/productos', productosRouter);
+app.use('/api/mensajes', mensajesRouter);
 
 const localServer = app.listen(PORT, () => {
 	console.log(
