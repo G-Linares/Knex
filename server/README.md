@@ -19,6 +19,7 @@
   docker ps
   ```
 - Si esta ahi, ya tienes la base de datos montada en puerto 3306
+- Si tienes MariaDB instalado seguro ya tienes contraseña de Root, intenta con esa, si no con la que se define en el .env, en el ejemplo es "dev"
 - Despues, instalas dependencias con
   ```
   npm i

@@ -24,6 +24,9 @@
 		"prettier": "^2.7.1"
 	},
 	"dependencies": {
-		"express": "^4.18.2"
+		"dotenv": "^16.0.3",
+		"express": "^4.18.2",
+		"knex": "^2.3.0",
+		"mysql": "^2.18.1"
 	}
 }
