@@ -10,6 +10,16 @@ const Chat = () => {
   const [sender, setSender] = useState("");
   const [conversation, setConversation] = useState([]);
 
+  // esto recupera la conversacion que ya se tenia
+  useEffect(() => {
+    return () => {
+      socket.on("recover_conversation", (data) => {
+        setConversation(data);
+      });
+    };
+  }, []);
+
+  // esto checa constantemente el socket, si tiene un cambio lo manda al estado, actualiza y lo manda a vista
   useEffect(() => {
     return () => {
       socket.on("receive_message", (data) => {
@@ -21,6 +31,7 @@ const Chat = () => {
         setConversation((conversation) => [...conversation, incomingMessage]);
       });
     };
+    //jeje
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [socket]);
 

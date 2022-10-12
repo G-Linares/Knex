@@ -1,4 +1,4 @@
-// este contenedor corresponde para el uso de productos, no le cambie el nombre por flojera
+// este contenedor corresponde para el uso de ambas DB, ya que contiene funciones mixtas
 export class Contenedor {
 	constructor(db, tableName, dbClient) {
 		this.db = db;
@@ -21,9 +21,9 @@ export class Contenedor {
 			case 'sqlite3':
 				this.db.schema
 					.createTable('mensajes', (table) => {
-						table.increments('id');
 						table.string('message');
-						table.string('timestamp');
+						table.string('date');
+						table.string('sender');
 					})
 					.then(() => console.log('Tablas de Sqlite3 Creadas'))
 					.catch((response) => {
@@ -35,9 +35,9 @@ export class Contenedor {
 
 	async listAllMessages() {
 		const allCurrentMessages = await this.db(this.tableName).select(
-			'id',
 			'message',
-			'timestamp'
+			'date',
+			'sender'
 		);
 		return allCurrentMessages;
 	}

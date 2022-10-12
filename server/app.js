@@ -4,8 +4,9 @@ import dotenv from 'dotenv';
 import http from 'http';
 import { Server } from 'socket.io';
 
+// aqui se realiza la logica de ruteo y de CRUD
 import productosRouter from './Routers/productRouter.js';
-import mensajesRouter from './Routers/mensajesRouter.js';
+// y aqui se realiza la logica de Socket en tiempo real
 import { socketLogic } from './Utils/socketLogic.js';
 
 dotenv.config();
@@ -36,7 +37,6 @@ io.on('connection', socketLogic); // en esta funcion esta toda la logica de sock
 /// socket.io setttingssss ---------
 
 app.use('/api/productos', productosRouter);
-app.use('/api/mensajes', mensajesRouter);
 
 // voy a tener dos servers, uno especificamente para los sockets de sockets.io y otro para el CRUD normal
 const localServer = app.listen(PORT, () => {
