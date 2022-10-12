@@ -2,6 +2,17 @@ export class Contenedor {
 	constructor(db, tableName) {
 		this.db = db;
 		this.tableName = tableName;
+		this.db.schema
+			.createTable('objetos', (table) => {
+				table.increments('id');
+				table.string('title');
+				table.string('thumbnail');
+				table.integer('price');
+			})
+			.then(() => console.log('creada'))
+			.catch((response) => {
+				console.log('tabla ya esixte');
+			});
 	}
 
 	async listAll() {

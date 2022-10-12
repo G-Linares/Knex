@@ -1,14 +1,12 @@
 import knex from 'knex';
-import dotenv from 'dotenv';
-dotenv.config();
 
 // estos valores no tienen que estar hardcodeados, luego los cambio
-const myOtherKnex = knex({
+const sqliteKnex = knex({
 	client: 'sqlite3',
 	connection: {
-		filename: '../DB/mensajes.sqlite',
+		filename: './DB/mensajes.db3',
 	},
-	pool: { min: 0, max: 10 },
+	useNullAsDefault: true,
 });
 
-export default myOtherKnex;
+export default sqliteKnex;

@@ -5,12 +5,15 @@ import { getNewId } from '../Utils/generalUtils.js';
 // este contenedor contiene las funciones para MAriaDb
 import { Contenedor } from '../Class/Contenedor.js';
 // Este Knex contiene las opciones para MariaDB, y asi mismo jala las variables de entorno para configurarla
-import myKnex from '../Options/mariaDB.js';
+import mariaKnex from '../Options/mariaDB.js';
 
 const productosRouter = express.Router();
 // el nombre de la tabla la puedes cambiar desde el .ENV
 dotenv.config();
-const mariadb = new Contenedor(myKnex, process.env.DB_TABLE_NAME);
+
+// aqui se cre la clase con la tabla para la DB y su clase para las funciones
+
+const mariadb = new Contenedor(mariaKnex, process.env.DB_TABLE_NAME);
 
 // jala toda la informacion de todos los items
 productosRouter.get('/', async (req, res) => {

@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 // estos valores no tienen que estar hardcodeados, luego los cambio
-const myKnex = knex({
+const mariaKnex = knex({
 	client: 'mysql',
 	connection: {
 		host: process.env.DB_HOST,
@@ -14,4 +14,4 @@ const myKnex = knex({
 	pool: { min: 0, max: 10 },
 });
 
-export default myKnex;
+export default mariaKnex;
