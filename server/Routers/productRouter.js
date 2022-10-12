@@ -1,9 +1,9 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import { getNewId } from '../Utils/generalUtils.js';
-
-// este contenedor contiene las funciones para MAriaDb
+// este contenedor contiene las funciones para MAriaDb y SQLITE3
 import { Contenedor } from '../Class/Contenedor.js';
+
 // Este Knex contiene las opciones para MariaDB, y asi mismo jala las variables de entorno para configurarla
 import mariaKnex from '../Options/mariaDB.js';
 
@@ -11,14 +11,14 @@ const productosRouter = express.Router();
 // el nombre de la tabla la puedes cambiar desde el .ENV
 dotenv.config();
 
-// aqui se cre la clase con la tabla para la DB y su clase para las funciones
-
-const mariadb = new Contenedor(mariaKnex, process.env.DB_TABLE_NAME);
+// la creacion del conetedor acepta los siguiente parametors
+// 1.- Options de la BD ----- 2.- El nombre de la tabla ---- 3.- El nombre del Cliente de la DB
+const mariadb = new Contenedor(mariaKnex, process.env.T_OBJETOS, 'mariaDB');
 
 // jala toda la informacion de todos los items
 productosRouter.get('/', async (req, res) => {
 	try {
-		const allCurrentItems = await mariadb.listAll();
+		const allCurrentItems = await mariadb.listAllProducts();
 		res.status(200).json(allCurrentItems);
 	} catch (e) {
 		res.status(500).json({ status: 'error', message: 'Algo salio mal' });
@@ -29,7 +29,7 @@ productosRouter.get('/', async (req, res) => {
 productosRouter.post('/', async (req, res) => {
 	const incomingItem = req.body;
 	try {
-		const allCurrentItems = await mariadb.listAll();
+		const allCurrentItems = await mariadb.listAllProducts();
 		const itemToAdd = {
 			...incomingItem,
 			id: getNewId(allCurrentItems),

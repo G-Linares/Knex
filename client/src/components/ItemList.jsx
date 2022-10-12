@@ -6,7 +6,7 @@ const ItemList = ({ id, price, thumbnail, title }) => {
     axios
       .delete(`http://localhost:8080/api/productos/${id}`)
       .then((response) => {
-        alert(response);
+        alert(response.data.message);
         window.location.reload();
       });
   };

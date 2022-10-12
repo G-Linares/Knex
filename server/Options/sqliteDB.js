@@ -4,7 +4,7 @@ import knex from 'knex';
 const sqliteKnex = knex({
 	client: 'sqlite3',
 	connection: {
-		filename: './DB/mensajes.db3',
+		filename: './DB/mensajes.sqlite3',
 	},
 	useNullAsDefault: true,
 });

@@ -4,8 +4,13 @@
 
 - Docker
 - Docker Compose
-- Admin tool para SQL (Yo uso Heidi pero si quieres puedes usar XAMPP)
+- Admin tool para SQL (Yo uso Heidi pero puedes ocupar Valentina, SQLstudio etc etc.)
 - Node JS
+
+### Por que docker
+
+Decidí usar docker para que puedas correr la DB en cualquier entorno y en cualquier máquina, en este caso solo lo ocupo con el ejercicio de CRUD de agregar objetos,(Globo Terraqueo, Escuadra, etc. etc. )
+Es muy fácil de correr y no deberías tener ningún problema al levantarlo.
 
 # Como correr el programa
 
@@ -28,4 +33,5 @@
   ```
   npm start
   ```
+- Al hacer esto en consola deberías verificar que el lema DB creada para ver que el esquema de tablas se haya costruido correctamente.
 - Despues iniciar front, y listo :D
